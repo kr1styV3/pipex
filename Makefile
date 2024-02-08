@@ -12,7 +12,11 @@ SRC_FILES = $(addprefix src/,main.c \
 	parsing.c \
 	handle_free.c \
 	handle_error.c \
-	handle_args.c)
+	handle_args.c \
+	handle_error_2.c \
+	parent_process.c \
+	child_process.c)
+
 # Define the corresponding object files and place them in $(OBJ_DIR)
 OBJ_FILES = $(SRC_FILES:src/%.c=$(OBJ_DIR)%.o)
 

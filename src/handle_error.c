@@ -6,7 +6,7 @@
 /*   By: chrlomba <chrlomba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:48:39 by chrlomba          #+#    #+#             */
-/*   Updated: 2024/02/08 01:13:02 by chrlomba         ###   ########.fr       */
+/*   Updated: 2024/02/08 13:50:05 by chrlomba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,14 @@ void	invalid_cmd(t_pipex *data)
 {
 	ft_printf("Error: Invalid command (%s)\n", data->cmd1[0]);
 	ft_free_data_struct(data);
+	exit(1);
+}
+
+void	pipe_error(t_pipex *data)
+{
+	ft_printf("Error: Pipe failed\n");
+	ft_free_data_struct(data);
+	close(data->pipe[0]);
+	close(data->pipe[1]);
 	exit(1);
 }

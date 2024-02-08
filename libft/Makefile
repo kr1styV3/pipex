@@ -72,9 +72,10 @@ $(OBJ_DIR)%.o: get_next_line_src/%.c | $(OBJ_DIR)
 
 # Rule to make the library, only display ASCII art on success
 $(NAME): $(OBJ)
-	@ar rcs $@ $(OBJ) && echo "$(COOL_YELLOW)Library $(NAME) created.$(NC)" && $(MAKE) animate_libft
-
-
+	@echo "Creating library $(NAME)"
+	@ar rcs $@ $(OBJ)
+	@echo -e "$(COOL_YELLOW)Library $(NAME) created.$(NC)"
+	@$(MAKE) animate_libft || echo "Animation failed or not defined"
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)

@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handle_error_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrlomba <chrlomba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 17:05:13 by chrlomba          #+#    #+#             */
-/*   Updated: 2024/02/08 15:04:23 by chrlomba         ###   ########.fr       */
+/*   Created: 2024/02/08 13:54:32 by chrlomba          #+#    #+#             */
+/*   Updated: 2024/02/08 13:55:27 by chrlomba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+void	fork_error(t_pipex *data)
 {
-	t_pipex	*data;
-
-	data = ft_start(argc, argv, envp);
-	if (pipe(data->pipe) == -1)
-		pipe_error(data);
-	data->pid = fork();
-	if (data->pid == -1)
-		fork_error(data);
-	else if (data->pid == 0)
-		child_process(data);
-	else
-		parent_process(data);
-	return (0);
+	ft_printf("Error: Fork failed\n");
+	ft_free_data_struct(data);
+	close(data->pipe[0]);
+	close(data->pipe[1]);
+	exit(1);
 }
