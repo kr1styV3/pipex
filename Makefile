@@ -72,13 +72,12 @@ valgrind: $(NAME)
 	@echo "Debugger Mode: Running Valgrind.."
 	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -\-verbose --log-file=valgrind-out.txt ./$(NAME) file "ls -l" "wc -l" outfile
 
-
-
 clean:
 	@echo "Cleaning object files..."
 	@rm -f $(OBJ_DIR)*.o
 	@rm -f valgrind-out.txt
 	@rm -f outfile
+	@rm -f out
 	@$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
@@ -86,6 +85,7 @@ fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 	@rm -rf $(OBJ_DIR)
+	@clear
 
 re: fclean all
 

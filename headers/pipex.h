@@ -6,7 +6,7 @@
 /*   By: chrlomba <chrlomba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:08:05 by chrlomba          #+#    #+#             */
-/*   Updated: 2024/02/08 15:26:25 by chrlomba         ###   ########.fr       */
+/*   Updated: 2024/02/08 19:28:35 by chrlomba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ char	*get_path(char **envp);
 t_pipex	*ft_start(int argc, char **argv, char **envp);
 
 // child_process
-void	child_process(t_pipex *data);
+void	child_process(t_pipex *data, char **envp);
 
 // parent_process
-void	parent_process(t_pipex *data);
+void	parent_process(t_pipex *data, char **envp);
 
 #endif

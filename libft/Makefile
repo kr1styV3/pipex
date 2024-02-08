@@ -74,8 +74,10 @@ $(OBJ_DIR)%.o: get_next_line_src/%.c | $(OBJ_DIR)
 $(NAME): $(OBJ)
 	@echo "Creating library $(NAME)"
 	@ar rcs $@ $(OBJ)
-	@echo -e "$(COOL_YELLOW)Library $(NAME) created.$(NC)"
-	@$(MAKE) animate_libft || echo "Animation failed or not defined"
+	@echo "$(COOL_YELLOW)Library $(NAME) created.$(NC)"
+	@echo "$$LIBFT_ASCII_ART"
+	@sleep 3
+
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)

@@ -6,7 +6,7 @@
 /*   By: chrlomba <chrlomba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:05:13 by chrlomba          #+#    #+#             */
-/*   Updated: 2024/02/08 15:04:23 by chrlomba         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:46:52 by chrlomba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	main(int argc, char **argv, char **envp)
 	if (data->pid == -1)
 		fork_error(data);
 	else if (data->pid == 0)
-		child_process(data);
+		child_process(data, envp);
 	else
-		parent_process(data);
+		parent_process(data, envp);
 	return (0);
 }
