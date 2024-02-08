@@ -6,7 +6,7 @@
 /*   By: chrlomba <chrlomba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:08:05 by chrlomba          #+#    #+#             */
-/*   Updated: 2024/02/08 19:28:35 by chrlomba         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:51:59 by chrlomba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	invalid_file(t_pipex *data, char *file);
 void	invalid_cmd(t_pipex *data);
 void	pipe_error(t_pipex *data);
 void	fork_error(t_pipex *data);
+void	execve_error(t_pipex *data);
 
 // parsing
 void	parse_data(t_pipex *data, char **argv, char **envp);

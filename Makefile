@@ -64,6 +64,8 @@ $(OBJ_DIR)%.o: src/%.c
 $(NAME): $(LIBFT) $(OBJ_FILES)
 	@echo "$(BOLD_INTENSE_RED)Creating executable $@...$(NC)"
 	@$(CC) $(OBJ_FILES) -L$(LIBFT_DIR) -lft -o $(NAME)
+	@clear
+	@echo "$$PIPEX_ASCII_ART"
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
@@ -90,3 +92,18 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+define PIPEX_ASCII_ART
+    ____      __  __             _
+   / __/___ _/ /_/ /_____     _ | |
+  / /_/ __ `/ __/ __/ __ \   (_)/ /
+ / __/ /_/ / /_/ /_/ /_/ /  _  / /
+/_/ _\__,_/\__/\__/\____/  (_)/_/
+   / __ \(_)___  ___  _  __ /_/
+  / /_/ / / __ \/ _ \| |/_/
+ / ____/ / /_/ /  __/>  <
+/_/   /_/ .___/\___/_/|_|
+       /_/
+endef
+export PIPEX_ASCII_ART
+
