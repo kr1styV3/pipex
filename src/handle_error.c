@@ -6,7 +6,7 @@
 /*   By: chrlomba <chrlomba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:48:39 by chrlomba          #+#    #+#             */
-/*   Updated: 2024/02/08 13:50:05 by chrlomba         ###   ########.fr       */
+/*   Updated: 2024/02/18 20:50:33 by chrlomba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	malloc_error(t_pipex *data)
 void	invalid_file(t_pipex *data, char *file)
 {
 	ft_printf("Error: Invalid file (%s)\n", file);
+	close(data->fd_input);
 	ft_free_data_struct(data);
 	exit(1);
 }

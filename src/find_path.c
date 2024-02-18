@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_args.c                                      :+:      :+:    :+:   */
+/*   find_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrlomba <chrlomba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 17:45:54 by chrlomba          #+#    #+#             */
-/*   Updated: 2024/02/18 19:40:47 by chrlomba         ###   ########.fr       */
+/*   Created: 2024/02/12 14:28:11 by chrlomba          #+#    #+#             */
+/*   Updated: 2024/02/18 20:00:34 by chrlomba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/pipex.h"
 
-int	cmd_control(char **argv)
+char	*find_path(char **paths, char *cmd)
 {
-	if (argv[2][0] == '\0' || argv[3][0] == '\0')
-		return (0);
-	if (argv[2] == NULL || argv[3] == NULL)
-		return (0);
-	return (1);
-}
+	char	*path;
+	char	*part_path;
+	int		i;
 
-int	handle_args(int argc, char **argv)
-{
-	if (argc == 5)
+	i = 0;
+	while (paths[i])
 	{
-		if (cmd_control(argv) == 1)
-			return (1);
+		part_path = ft_strjoin(paths[i], "/");
+		path = ft_strjoin(part_path, cmd);
+		free(part_path);
+		if (access(path, F_OK) == 0)
+			return (path);
+		free(path);
+		i++;
 	}
-	arg_error();
-	return (0);
+	return (NULL);
 }

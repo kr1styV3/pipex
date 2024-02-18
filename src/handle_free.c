@@ -6,7 +6,7 @@
 /*   By: chrlomba <chrlomba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:01:54 by chrlomba          #+#    #+#             */
-/*   Updated: 2024/02/07 21:15:52 by chrlomba         ###   ########.fr       */
+/*   Updated: 2024/02/18 22:19:51 by chrlomba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_free_data_struct(t_pipex *data)
 {
 	free(data->infile);
 	free(data->outfile);
-	free(data->path);
+	ft_free_2d(data->paths);
 	ft_free_2d(data->cmd1);
 	ft_free_2d(data->cmd2);
 	close(data->fd_input);

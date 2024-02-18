@@ -6,20 +6,17 @@
 /*   By: chrlomba <chrlomba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:18:17 by chrlomba          #+#    #+#             */
-/*   Updated: 2024/02/08 19:27:58 by chrlomba         ###   ########.fr       */
+/*   Updated: 2024/02/18 22:11:51 by chrlomba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/pipex.h"
-#include <sys/wait.h>
 
-void	parent_process(t_pipex *data, char **envp)
+void	parent_process(t_pipex *data, char **envp, char *path)
 {
-	waitpid(data->pid, NULL, 0);
-	dup2(data->fd_output, STDOUT_FILENO);
 	close(data->pipe[1]);
 	dup2(data->pipe[0], STDIN_FILENO);
+	dup2(data->fd_output, STDOUT_FILENO);
 	close(data->pipe[0]);
-	execve(data->cmd2[0], data->cmd2, envp);
-	invalid_cmd(data);
+	execve(path, data->cmd1, envp);
 }

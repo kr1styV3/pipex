@@ -1,6 +1,6 @@
 NAME = pipex
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 LIBFT_DIR = ./libft/
 LIBFT = $(LIBFT_DIR)libft.a
 OBJ_DIR = .obj/
@@ -15,7 +15,8 @@ SRC_FILES = $(addprefix src/,main.c \
 	handle_args.c \
 	handle_error_2.c \
 	parent_process.c \
-	child_process.c)
+	child_process.c \
+	find_path.c)
 
 # Define the corresponding object files and place them in $(OBJ_DIR)
 OBJ_FILES = $(SRC_FILES:src/%.c=$(OBJ_DIR)%.o)
@@ -72,11 +73,12 @@ $(LIBFT):
 
 valgrind: $(NAME)
 	@echo "Debugger Mode: Running Valgrind.."
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -\-verbose --log-file=valgrind-out.txt ./$(NAME) file "ls -l" "wc -l" outfile
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -\-verbose --log-file=valgrind-out.txt ./$(NAME) file "izshgoiha09873r9q8h" "wc -l" out
 
 clean:
 	@echo "Cleaning object files..."
 	@rm -f $(OBJ_DIR)*.o
+	@rm -rf $(OBJ_DIR)
 	@rm -f valgrind-out.txt
 	@rm -f outfile
 	@rm -f out
@@ -86,7 +88,6 @@ fclean: clean
 	@echo "Full clean..."
 	@rm -f $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@rm -rf $(OBJ_DIR)
 	@clear
 
 re: fclean all
