@@ -16,7 +16,8 @@ SRC_FILES = $(addprefix src/,main.c \
 	handle_error_2.c \
 	parent_process.c \
 	child_process.c \
-	find_path.c)
+	find_path.c \
+	exec.c)
 
 # Define the corresponding object files and place them in $(OBJ_DIR)
 OBJ_FILES = $(SRC_FILES:src/%.c=$(OBJ_DIR)%.o)

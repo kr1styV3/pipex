@@ -6,7 +6,7 @@
 /*   By: chrlomba <chrlomba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:08:05 by chrlomba          #+#    #+#             */
-/*   Updated: 2024/02/18 22:30:26 by chrlomba         ###   ########.fr       */
+/*   Updated: 2024/02/20 21:11:13 by chrlomba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ typedef struct s_pipex
 	int		pipe[2];
 	int		fd_input;
 	int		fd_output;
-	pid_t	pid;
+	pid_t	pid1;
+	pid_t	pid2;
 }		t_pipex;
 
 // handle_args
@@ -58,6 +59,7 @@ char	*find_path(char **paths, char *cmd);
 
 // pipex
 t_pipex	*ft_start(int argc, char **argv, char **envp);
+void	exec(t_pipex *data, char *child_path, char *parent_path, char **envp);
 
 // child_process
 void	child_process(t_pipex *data, char **envp, char *path);

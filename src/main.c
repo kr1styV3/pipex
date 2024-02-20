@@ -6,7 +6,7 @@
 /*   By: chrlomba <chrlomba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:05:13 by chrlomba          #+#    #+#             */
-/*   Updated: 2024/02/18 22:30:47 by chrlomba         ###   ########.fr       */
+/*   Updated: 2024/02/20 21:17:17 by chrlomba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,9 @@ int	main(int argc, char **argv, char **envp)
 	}
 	if (pipe(data->pipe) == -1)
 		pipe_error(data);
-	data->pid = fork();
-	if (data->pid == -1)
-		fork_error(data);
-	else if (data->pid == 0)
-		child_process(data, envp, child_path);
-	waitpid(data->pid, NULL, 0);
-	parent_process(data, envp, parent_path);
+	exec(data, child_path, parent_path, envp);
+	free(child_path);
+	free(parent_path);
+	ft_free_data_struct(data);
 	return (0);
 }
